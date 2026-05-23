@@ -48,3 +48,21 @@ function groupTodosReduce(todos) {
 
 console.log(groupTodosReduce(todos));
 
+
+// ──filter / map 版本 ──
+
+function groupTodosFilterMap(todos){
+  //直接return物件
+  return{
+    //分別在兩個key的value上操作方法
+    done: todos
+      .filter(({completed_at}) => completed_at != null )
+      .map(({content}) => content ),
+    pending: todos
+      .filter(({completed_at}) => completed_at === null)
+      .map(({content}) => content)
+  }
+}
+
+console.log(groupTodosFilterMap(todos));
+
